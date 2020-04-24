@@ -27,12 +27,10 @@ const Import: React.FC = () => {
 
     uploadedFiles.map(csv => data.append('file', csv.file, csv.name));
 
-    console.log(data.getAll('file'));
-
     try {
       await api.post('/transactions/import', data);
     } catch (err) {
-      console.log(err.response.error);
+      console.error(err.response.error);
     }
 
     history.push('/');
